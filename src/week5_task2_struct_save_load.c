@@ -1,7 +1,11 @@
-// week5_task2_struct_save_load.c
-// Task 2: Save and load structured records from a file
-// Week 5 – Files & Modular Programming
-// TODO: Complete function implementations and file handling logic.
+/*
+ * week5_task2_struct_save_load.c
+ * Author: Ömer Kağan Türkel
+ * Student ID: 231ADB255
+ * Description:
+ *   Demonstrates saving and loading a struct to and from a text file.
+ *   Uses fprintf() and fscanf() for structured data storage.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +19,7 @@ typedef struct {
     float gpa;
 } Student;
 
-// Function prototypes
+/* Function prototypes */
 void save_student(Student s, const char *filename);
 Student load_student(const char *filename);
 
@@ -27,23 +31,45 @@ int main(void) {
 
     const char *filename = "student.txt";
 
-    // TODO: Call save_student() to save student data to file
-    // TODO: Call load_student() to read data back into a new struct
-    // TODO: Print loaded data to confirm correctness
+    printf("Saving student to file...\n");
+    save_student(s1, filename);
+
+    printf("Loading student from file...\n");
+    Student loaded = load_student(filename);
+
+    printf("Loaded student: %s, %d, GPA %.2f\n", loaded.name, loaded.age, loaded.gpa);
 
     return 0;
 }
 
-// TODO: Implement save_student()
-// Open file for writing, check errors, write fields, then close file
+/* Save student data to text file */
 void save_student(Student s, const char *filename) {
-    // ...
+    FILE *fp = fopen(filename, "w");
+    if (fp == NULL) {
+        printf("Error: could not open file '%s' for writing.\n", filename);
+        exit(1);
+    }
+
+    fprintf(fp, "%s %d %.2f\n", s.name, s.age, s.gpa);
+
+    fclose(fp);
 }
 
-// TODO: Implement load_student()
-// Open file for reading, check errors, read fields, then close file
+/* Load student data from text file */
 Student load_student(const char *filename) {
     Student s;
-    // ...
+    FILE *fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("Error: could not open file '%s' for reading.\n", filename);
+        exit(1);
+    }
+
+    if (fscanf(fp, "%49s %d %f", s.name, &s.age, &s.gpa) != 3) {
+        printf("Error: failed to read student data from file.\n");
+        fclose(fp);
+        exit(1);
+    }
+
+    fclose(fp);
     return s;
 }

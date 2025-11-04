@@ -1,6 +1,6 @@
 /*
  * Lab 3, Task 2
- * Student Name: Ömer Kağan Türkel
+ * Student Name: Omer Kagan Turkel
  * Student ID: 231ADB255
  *
  * Practice using pointers as function parameters.

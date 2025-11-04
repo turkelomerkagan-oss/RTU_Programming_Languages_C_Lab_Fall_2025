@@ -1,6 +1,6 @@
 /*
  * Lab 3, Task 3
- * Student Name: Ömer Kağan Türkel
+ * Student Name: Omer Kagan Turkel
  * Student ID: 231ADB255
  *
  * Implement basic string handling functions.

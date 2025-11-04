@@ -1,6 +1,7 @@
 /*
  * Lab 3, Task 2
- * Student Name, Student ID
+ * Student Name: Ömer Kağan Türkel
+ * Student ID: 231ADB255
  *
  * Practice using pointers as function parameters.
  * Implement:
@@ -20,13 +21,15 @@
 
 #include <stdio.h>
 
-// Function prototypes
+/* ---- Function Prototypes ---- */
 void swap(int *x, int *y);
 void modify_value(int *x);
 
+/* ---- Main Function (Testing) ---- */
 int main(void) {
     int a = 3, b = 7;
     printf("Before swap: a=%d, b=%d\n", a, b);
+
     swap(&a, &b);
     printf("After swap: a=%d, b=%d\n", a, b);
 
@@ -36,11 +39,13 @@ int main(void) {
     return 0;
 }
 
-// Implement functions below
+/* ---- Function Implementations ---- */
 void swap(int *x, int *y) {
-    // TODO: swap values using a temporary variable
+    int temp = *x;  // store value of x
+    *x = *y;        // assign y’s value to x
+    *y = temp;      // assign stored value to y
 }
 
 void modify_value(int *x) {
-    // TODO: multiply value by 2
+    *x = (*x) * 2;  // multiply the value by 2
 }

@@ -1,6 +1,7 @@
 /*
  * Lab 3, Task 3
- * Student Name, Student ID
+ * Student Name: Ömer Kağan Türkel
+ * Student ID: 231ADB255
  *
  * Implement basic string handling functions.
  * Write your own versions of:
@@ -21,12 +22,12 @@
 
 #include <stdio.h>
 
-// Function prototypes
+/* ---- Function Prototypes ---- */
 int my_strlen(const char *str);
 void my_strcpy(char *dest, const char *src);
 
+/* ---- Main Function (Testing) ---- */
 int main(void) {
-    // TODO: Test your functions here
     char test[] = "Programming in C";
     char copy[100];
 
@@ -36,15 +37,30 @@ int main(void) {
     my_strcpy(copy, test);
     printf("Copy: %s\n", copy);
 
+    /* Additional test */
+    char empty[] = "";
+    printf("Length of empty string: %d\n", my_strlen(empty));
+
+    my_strcpy(copy, "RTU Lab 3 Complete!");
+    printf("Copy 2: %s\n", copy);
+
     return 0;
 }
 
-// Implement functions below
+/* ---- Function Implementations ---- */
 int my_strlen(const char *str) {
-    // TODO: count characters until '\0'
-    return 0; // placeholder
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+    return length;
 }
 
 void my_strcpy(char *dest, const char *src) {
-    // TODO: copy characters until '\0'
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0'; // add string terminator
 }
